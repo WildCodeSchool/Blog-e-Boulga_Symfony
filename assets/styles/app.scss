@@ -1,2 +1,21 @@
 //start coding by removing this file and adding yours ;)
-@import "wcs";
+@import "footer.scss";
+
+* {
+    --main-color: #FFA458;
+    --color-hover: #793700;
+    --admin-color: #9EA7D8;
+    --our-black: rgb(11, 11, 11);
+    --header-height-desktop: 8rem;
+    --footer-height-desktop: 195px;
+    --footer-height-responsive: 366px;
+    --min-height-main: calc(100vh - var(--footer-height-desktop) - var(--header-height-desktop));
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+#thisPage {
+    border-bottom: 1px solid var(--our-black);
+}
