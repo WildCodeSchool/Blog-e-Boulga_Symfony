@@ -59,19 +59,19 @@ class Article
     #[Assert\Length(min: 3, max: 255)]
     private ?string $shadowColor = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    #[ORM\Column(type: "datetime", nullable: true)]
     private ?\DateTimeInterface $releaseDate = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $status = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?\DateTimeImmutable $updatedAt = null;
+    #[ORM\Column(type: "datetime", nullable: true)]
+    private ?\DateTimeInterface $updatedAt = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $imageSize = null;
 
-    #[ORM\ManyToOne(inversedBy: 'category')]
+    #[ORM\ManyToOne(inversedBy: 'articles')]
     private ?Author $author = null;
 
     #[ORM\ManyToOne(inversedBy: 'articles')]
@@ -225,12 +225,12 @@ class Article
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTimeImmutable
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(?\DateTimeImmutable $updatedAt): static
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): static
     {
         $this->updatedAt = $updatedAt;
 

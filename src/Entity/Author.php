@@ -41,11 +41,11 @@ class Author
     private ?User $user = null;
 
     #[ORM\OneToMany(mappedBy: 'author', targetEntity: Article::class)]
-    private Collection $author;
+    private Collection $articles;
 
     public function __construct()
     {
-        $this->author = new ArrayCollection();
+        $this->articles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -140,27 +140,27 @@ class Author
     /**
      * @return Collection<int, Article>
      */
-    public function getAuthor(): Collection
+    public function getArticles(): Collection
     {
-        return $this->author;
+        return $this->articles;
     }
 
-    public function addAuthor(Article $author): static
+    public function addArticle(Article $article): static
     {
-        if (!$this->author->contains($author)) {
-            $this->author->add($author);
-            $author->setAuthor($this);
+        if (!$this->articles->contains($article)) {
+            $this->articles->add($article);
+            $article->setAuthor($this);
         }
 
         return $this;
     }
 
-    public function removeAuthor(Article $author): static
+    public function removeArticle(Article $article): static
     {
-        if ($this->author->removeElement($author)) {
+        if ($this->articles->removeElement($article)) {
             // set the owning side to null (unless already changed)
-            if ($author->getAuthor() === $this) {
-                $author->setAuthor(null);
+            if ($article->getAuthor() === $this) {
+                $article->setAuthor(null);
             }
         }
 
