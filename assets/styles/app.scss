@@ -19,3 +19,13 @@
 #thisPage {
     border-bottom: 1px solid var(--our-black);
 }
+
+a {
+    text-decoration: none;
+}
+
+main {
+    margin: 0 13rem;
+    display: flex;
+    justify-content: center;
+}
