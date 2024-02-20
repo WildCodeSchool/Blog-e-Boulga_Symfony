@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - Article{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('article_show') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('article_show') }}
+{% endblock %}
+
+{% block body %}
+    <main>
+        <a id="go_back" href="/"><img src="{{ asset('build/images/components/back-arrow.svg') }}" alt="icone d'une flèche vers
+        l'arrière noire" /></a>
+        <section class="content-width body_text">
+            <h1 id="article_title">
+                {{ article.articleTitle }}
+            </h1>
+
+            <p class="content-width article_P">
+                {{ article.description|raw}}
+            </p>
+        </section>
+        <section id="img_section">
+            <img id="article_img" src="{{ asset('build/' ~ article.imgSrc) }}" alt="{{ article.altImg }}" />
+        </section>
+
+        <section class="content-width body_text">
+            <h2 class="body_title">Introduction</h2>
+            <p class="article_P">
+                {{ article.introduction|raw}}
+            </p>
+
+            <h2 class="body_title">Le détail</h2>
+            <p class="article_P">
+                {{ article.detail|raw }}
+            </p>
+        </section>
+
+        <a href="/about_us" id="author_section" class="content-width">
+            <aside id="left_author">
+                <img id="author_img" src="{{ asset('build/images/authors/' ~ author.imgSrc) }}" alt="Photo de l'auteur {{ author
+                .user.firstName }} {{ author.user.lastName }}" />
+                <h3 id="author_name">{{ author.user.firstName }} {{ author.user.lastName }}</h3>
+            </aside>
+            <article id="right_author">
+                <h3 id="author_title_desc">A propos de l'auteur :</h3>
+                {{ author.shortDescription|raw }}
+            </article>
+        </a>
+    </main>
+{% endblock %}
