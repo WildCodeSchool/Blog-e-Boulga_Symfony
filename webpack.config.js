@@ -34,6 +34,7 @@ Encore
     .addEntry('app', './assets/app.js')
     .addEntry('footer', './assets/footer.js')
     .addEntry('header', './assets/header.js')
+    .addEntry('contact_us', './assets/contact_us.js')
     .addEntry('about_us', './assets/about_us.js')
     .addEntry('home', './assets/home.js')
     .addEntry('article_show', './assets/article_show.js')
