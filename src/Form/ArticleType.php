@@ -45,7 +45,7 @@ class ArticleType extends AbstractType
                 'help' => 'Le titre de votre article qui sera visible sur la homepage.',
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Veuillez renseigner le titre de votre article pour la homepage',
+                        'message' => 'Veuillez renseigner le titre de votre article pour la page d\'accueil',
                     ]),
                 ]
             ])
@@ -55,7 +55,7 @@ class ArticleType extends AbstractType
                 'help' => 'Le texte de présentation présent sur la homepage.',
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Veuillez renseigner la description pour la homepage',
+                        'message' => 'Veuillez renseigner la description pour la page d\'accueil.',
                     ]),
                 ]
             ])
@@ -91,7 +91,6 @@ class ArticleType extends AbstractType
                 'label' => 'Statut',
                 'help' => 'Choix du statut de votre article.',
                 'required' => true,
-
                 'choices' => [
                     'Brouillon' => '1',
                     'Publié' => '2',
@@ -131,13 +130,7 @@ class ArticleType extends AbstractType
             ])
             ->add('imgSrc', TextType::class, [
                 'label' => 'Choix de l\'image',
-                'required' => true,
                 'help' => 'L\'image qui illustrera votre article.',
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Veuillez renseigner l\'image de votre article',
-                    ]),
-                ]
             ]);
     }
 

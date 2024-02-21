@@ -1,13 +1,13 @@
 {{ form_start(form) }}
+<div>
     <div>
-        <div>
-            {{ form_label(form.articleTitle) }}
-        </div>
-        {{ form_widget(form.articleTitle) }}
-        <div class="formHelper">
-            {{ form_help(form.articleTitle) }}
-        </div>
+        {{ form_label(form.articleTitle) }}
     </div>
+    {{ form_widget(form.articleTitle) }}
+    <div class="formHelper">
+        {{ form_help(form.articleTitle) }}
+    </div>
+</div>
 <div>
     <div>
         {{ form_label(form.homeTitle) }}
@@ -79,7 +79,8 @@
     <div class="formHelper">
         {{ form_help(form.category) }}
     </div>
-</div><div>
+</div>
+<div>
     <div>
         {{ form_label(form.imgSrc) }}
     </div>
@@ -89,5 +90,5 @@
     </div>
 </div>
 
-    <button class="btn">{{ button_label|default('Save') }}</button>
+<button class="btn">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}
