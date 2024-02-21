@@ -19,7 +19,6 @@ class ContactController extends AbstractController
         $form = $this->createForm(ContactFormType::class, $contactForm);
         $form->handleRequest($request);
 
-
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($contactForm);
             $entityManager->flush();
