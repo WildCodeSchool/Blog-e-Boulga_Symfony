@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - Qui sommes-nous ?{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('about_us') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('about_us') }}
+{% endblock %}
+
+{% block body %}
+    <main>
+        <div id="mainPage">
+            <h1 id="pageTitle">L’équipe Blog-e-Boulga</h1>
+            <p id="pagePresentation">
+                Bienvenue dans notre équipe de développement web, la diversité de nos parcours professionnels se conjugue pour créer une synergie dans la réalisation de notre projet commun : un blog dédié au développement web.<br>
+                Notre objectif commun est de faire de cet espace une ressource pour les passionnés de développement web, des débutants aux professionnels chevronnés. Nous croyons que notre collaboration et nos perspectives variées contribueront à faire de ce projet une référence dans l'univers du développement web.
+            </p>
+            <figure class="separationAbout">
+                <img class="longSeparation" src="{{ asset('build/images/components/separation.svg') }}" alt="separation">
+                <img class="smallSeparation" src="{{ asset('build/images/components/small_separation.svg') }}" alt="small separation">
+            </figure>
+            {% for author in authors %}
+                {% include 'components/_about_us_card.html.twig' %}
+            {% endfor %}
+        </div>
+    </main>
+{% endblock %}

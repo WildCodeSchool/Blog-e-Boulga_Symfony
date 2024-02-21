@@ -22,70 +22,54 @@
                         <p>Blog-e-boulga Inc.</p>
                         <p>15 rue de la truffe <br />12345 Chat-City WORLD</p>
                         <p>Tel: 0123456789</p>
-                        <p>Mail us: contact@blogeboulga.com</p>
+                        <p>Envoyez nous un mail:</p>
+                        <p>contact@blogeboulga.com</p>
                     </address>
                 </section>
             </div>
         </div>
 
         <div id="contactUsBlock">
-            {% if success is not defined %}
-            <form action="" method="post" class="contactUsForm">
-                <p id="header-form">Contacter l’équipe e-Boulga</p>
-                <div>
-                    <label for="firstName">Votre prénom :<span class="asterix"> *</span></label>
-                    <input id="firstName" class="input_form" type="text" name="firstName" placeholder="John" value="{%
-                        if post is defined %}{{ post.firstName }}{% endif %}"/>
-                    <small style="display: none;">Minimum 2 caractères requis</small>
+            {{ form_start(form, {'attr': { 'class': 'contactUsForm', 'novalidate': 'novalidate' }}) }}
+                <h2 id="header-form">Contacter l’équipe e-Boulga</h2>
+                {{ form_label(form.firstName) }}
+                {{ form_widget(form.firstName) }}
+                <div class="errors-w">
+                    {{ form_errors(form.firstName) }}
                 </div>
-                <div>
-                    <label for="lastName">Votre nom :<span class="asterix"> *</span></label>
-                    <input id="lastName" class="input_form" type="text" name="lastName" placeholder="Doe" value="{% if
-                        post is defined %}{{ post.lastName
-                    }}{% endif %}"/>
-                    <small style="display: none;">Minimum 2 caractères requis</small>
+                {{ form_label(form.lastName) }}
+                {{ form_widget(form.lastName) }}
+                <div class="errors-w">
+                    {{ form_errors(form.lastName) }}
                 </div>
-                <div>
-                    <label for="emailAddress">Votre adresse mail :<span class="asterix"> *</span></label>
-                    <input id="mail" class="input_form" type="email" name="emailAddress" placeholder="john@doe.com" value="{% if post is defined
-                    %}{{ post.emailAddress }}{% endif %}"/>
-                    <small style="display: none;">Adresse email valide requise</small>
+                {{ form_label(form.emailAddress) }}
+                {{ form_widget(form.emailAddress) }}
+                <div class="errors-w">
+                    {{ form_errors(form.emailAddress) }}
                 </div>
-                <div>
-                    <label for="topic">Sujet de votre message :<span class="asterix"> *</span></label>
-                    <input id="subject" class="input_form" type="text" name="topic" placeholder="Propostion d'article" value="{% if post is defined
-                    %}{{ post.topic }}{% endif %}"/>
-                    <small style="display: none;">Minimum 4 caractères requis</small>
+                {{ form_label(form.topic) }}
+                {{ form_widget(form.topic) }}
+                <div class="errors-w">
+                    {{ form_errors(form.topic) }}
                 </div>
-                <div>
-                    <label for="messageContent">Votre message :<span class="asterix"> *</span></label>
-                    <textarea class="input_form" id="message" rows="5" name="messageContent">{% if post is defined %}{{ post.messageContent }}{% endif %}</textarea>
-                    <small style="display: none;">Minimum 10 caractères requis</small>
+                {{ form_label(form.messageContent) }}
+                {{ form_widget(form.messageContent) }}
+                <div class="errors-w">
+                    {{ form_errors(form.messageContent) }}
                 </div>
                 <div id="validationCheck">
-                    <input class="input_form" type="checkbox" name="validation" id="validation" />
-                    <label class="labelMod" for="validation">En cochant cette case, vous acceptez nos <a href="#">modalités et
-                            conditions</a>
-                        d'utilisation ainsi que notre <a href="#">politique de confidentitalité</a> pour la gestion des données fournies dans ce formulaire.<span class="asterix"> *</span></label>
+                    {{ form_widget(form.terms) }}
+                    <label class="labelMod" for="contact_us_terms">En cochant cette case, vous acceptez nos <a class="terms-link" href='#'>modalités et conditions</a> d'utilisation ainsi que notre <a class="terms-link" href='#'>politique de confidentitalité</a> pour la gestion des données fournies dans ce formulaire.</label>
                 </div>
-
-                {% if errors is defined %}
-                    {% for error in errors %}
-                <p class="error">{{ error }}</p>
-                    {% endfor %}
-                {% endif %}
-
                 <div id="validationButton">
-                    <button name="envoyer" id="btn_submit" type="submit">Envoyer</button>
+                    <button class="btn" id="btn_submit">{{ button_label|default('Envoyer') }}</button>
                 </div>
-            </form>
-            {% endif %}
-            {% if success is defined %}
-            <div class="confirmation-box contactUsBlock">
-                <p class=".msg_sent">{{ success }}</p>
-                <a href="/contact_us">→ Renvoyer un message</a>
-            </div>
-            {% endif %}
+                {% for message in app.flashes('success') %}
+                    <div class="alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {{ form_end(form) }}
         </div>
     </div>
 </main>

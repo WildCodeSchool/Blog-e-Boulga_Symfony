@@ -65,8 +65,7 @@ h1 {
     color: red;
 }
 
-small {
-    margin-top: -1rem;
+.small {
     color: red;
     font-size: 0.75rem;
 }
@@ -97,7 +96,8 @@ small {
     display: flex;
     justify-content: center;
     grid-column: 2;
-    max-width: 25.3125rem;
+    max-width: 26rem;
+    min-width: 21rem;
     height: 42.4375rem;
     border-radius: 0rem 0.625rem 0.625rem 0rem;
     background: rgba(255, 164, 88, 0.07);
@@ -124,7 +124,7 @@ img+address {
     grid-column: 1;
     grid-row: 1;
     width: 100%;
-    max-width: 40rem;
+    max-width: 30rem;
     justify-content: center;
     align-items: center;
     min-width: 405px;
@@ -135,8 +135,9 @@ img+address {
 }
 
 #header-form {
-    margin-bottom: 2.4rem;
+    margin-bottom: 2rem;
     text-decoration: underline;
+    font-size: 1.2rem;
 }
 
 label,
@@ -144,6 +145,7 @@ input,
 textarea {
     display: block;
     width: 100%;
+    font-size: 0.8rem;
 }
 
 input,
@@ -151,10 +153,54 @@ textarea {
     margin-bottom: 1rem;
     resize: none;
     outline: none;
+    padding: 0.5rem;
+}
+
+textarea {
+    height: 10rem;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+select {
+    border: 1px solid black;
+    height: 2rem;
+    background: white;
+    appearance:none;
+    padding-left: 1rem;
+    cursor: pointer;
+    box-shadow:none;
+    outline: none;
+    border-radius: 10px;
+    margin: 0;
+    width: 100%;
+
+    &:hover {
+        background-color: var(--main-color);
+        border: none;
+        padding-left: 1.1rem;
+        transition: 0.3s;
+    }
+}
+
+.alert-success {
+    color: white;
+    height: 2rem;
+    width: 100%;
+    background-color: green;
+    font-size: 0.7rem;
+    margin: 2rem 0 0 0;
+    width: 100%;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #validationCheck {
     display: flex;
+    margin-top: 2rem;
 }
 
 #validationCheck label {
@@ -210,6 +256,33 @@ textarea {
 input {
     border: none;
     border-bottom: 1px solid;
+    margin-bottom: 2rem;
+}
+
+select {
+    margin-bottom: 1rem;
+}
+
+label {
+    margin-bottom: 1rem;
+}
+
+
+#contact_form_terms {
+    width: auto;
+    margin-right: 0.5rem;
+}
+
+.errors-w {
+    color: red;
+    font-size: 0.7rem;
+    margin: -1rem 0 1rem 0;
+    width: 100%;
+
+    ul {
+        padding: 0.5px 0;
+        list-style-type: none;
+    }
 }
 
 /*Mobile*/
@@ -294,4 +367,22 @@ input {
         -webkit-transform: scale3d(1, 1, 1);
         transform: scale3d(1, 1, 1);
     }
+}
+  
+@keyframes shake {
+10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+}
+
+20%, 80% {
+    transform: translate3d(2px, 0, 0);
+}
+
+30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+}
+
+40%, 60% {
+    transform: translate3d(4px, 0, 0);
+}
 }
