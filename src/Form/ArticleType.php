@@ -29,25 +29,37 @@ class ArticleType extends AbstractType
 
         $builder
             ->add('articleTitle', TextType::class, [
+                'label' => 'Titre',
                 'required' => true,
+                'help' => 'Le titre de votre article.',
             ])
             ->add('homeTitle', TextType::class, [
+                'label' => 'Titre homepage',
                 'required' => true,
-            ])
-            ->add('imgSrc', TextType::class, [
-                'required' => true,
+                'help' => 'Le titre de votre article qui sera visible sur la homepage.',
             ])
             ->add('homePreview', TextareaType::class, [
-                'required' => true,])
-            ->add('introduction', TextareaType::class, [
-                'required' => true,])
-            ->add('detail', TextareaType::class, [
-                'required' => true,])
+                'label' => 'Description Homepage',
+                'required' => true,
+                'help' => 'Le texte de présentation présent sur la homepage.',
+                ])
             ->add('description', TextareaType::class, [
                 'required' => true,
+                'help' => 'Rapide description résumant le sujet de votre article.',
             ])
+            ->add('introduction', TextareaType::class, [
+                'label' => 'Introduction',
+                'required' => true,
+                'help' => 'Le texte d\'introduction de votre article.',
+                ])
+            ->add('detail', TextareaType::class, [
+                'required' => true,
+                'help' => 'Le corps de votre article.',
+                ])
+
             ->add('status', ChoiceType::class, [
                 'label' => 'Statut',
+                'help' => 'Choix du statut de votre article.',
                 'required' => true,
                 'choices' => [
                     'Brouillon' => '1',
@@ -57,6 +69,8 @@ class ArticleType extends AbstractType
             ])
             ->add('author', EntityType::class, [
                 'class' => Author::class,
+                'help' => 'Choix de l\'auteur qui sera crédité.',
+                'label' => 'Auteur',
                 'choices' => $author,
                 'required' => true,
                 'choice_label' => function (Author $author) {
@@ -64,9 +78,15 @@ class ArticleType extends AbstractType
                 },
             ])
             ->add('category', EntityType::class, [
+                'label' => 'Catégorie de l\'article',
                 'class' => Category::class,
                 'required' => true,
                 'choice_label' => 'category_name',
+            ])
+            ->add('imgSrc', TextType::class, [
+                'label' => 'Choix de l\'image',
+                'required' => true,
+                'help' => 'L\'image qui illustrera votre article.',
             ])
             ;
     }

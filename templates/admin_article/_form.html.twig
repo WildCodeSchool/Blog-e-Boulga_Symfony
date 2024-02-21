@@ -1,4 +1,93 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    <div>
+        <div>
+            {{ form_label(form.articleTitle) }}
+        </div>
+        {{ form_widget(form.articleTitle) }}
+        <div class="formHelper">
+            {{ form_help(form.articleTitle) }}
+        </div>
+    </div>
+<div>
+    <div>
+        {{ form_label(form.homeTitle) }}
+    </div>
+    {{ form_widget(form.homeTitle) }}
+    <div class="formHelper">
+        {{ form_help(form.homeTitle) }}
+    </div>
+</div>
+<div>
+    <div>
+        {{ form_label(form.homePreview) }}
+    </div>
+    {{ form_widget(form.homePreview) }}
+    <div class="formHelper">
+        {{ form_help(form.homePreview) }}
+    </div>
+</div>
+<div>
+    <div>
+        {{ form_label(form.description) }}
+    </div>
+    {{ form_widget(form.description) }}
+    <div class="formHelper">
+        {{ form_help(form.description) }}
+    </div>
+</div>
+<div>
+    <div>
+        {{ form_label(form.introduction) }}
+    </div>
+    {{ form_widget(form.introduction) }}
+    <div class="formHelper">
+        {{ form_help(form.introduction) }}
+    </div>
+</div>
+<div>
+    <div>
+        {{ form_label(form.detail) }}
+    </div>
+    {{ form_widget(form.detail) }}
+    <div class="formHelper">
+        {{ form_help(form.detail) }}
+    </div>
+</div>
+<div>
+    <div>
+        {{ form_label(form.status) }}
+    </div>
+    {{ form_widget(form.status) }}
+    <div class="formHelper">
+        {{ form_help(form.status) }}
+    </div>
+</div>
+<div>
+    <div>
+        {{ form_label(form.author) }}
+    </div>
+    {{ form_widget(form.author) }}
+    <div class="formHelper">
+        {{ form_help(form.author) }}
+    </div>
+</div>
+<div>
+    <div>
+        {{ form_label(form.category) }}
+    </div>
+    {{ form_widget(form.category) }}
+    <div class="formHelper">
+        {{ form_help(form.category) }}
+    </div>
+</div><div>
+    <div>
+        {{ form_label(form.imgSrc) }}
+    </div>
+    {{ form_widget(form.imgSrc) }}
+    <div class="formHelper">
+        {{ form_help(form.imgSrc) }}
+    </div>
+</div>
+
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

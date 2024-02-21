@@ -1,0 +1,312 @@
+main {
+    min-width: 30rem;
+    margin: 0 auto;
+    max-width: 70rem;
+    width: auto;
+}
+
+h1 {
+    margin-top: 30px;
+}
+
+form {
+    font-weight: bold;
+    font-family: 'Titillium Web', sans-serif;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 1500px;
+}
+
+input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 20px;
+}
+
+#title {
+    margin-bottom: 1rem;
+    border: 1px solid var(--admin-color);
+    padding: 0.5rem;
+    text-transform: capitalize;
+}
+
+#hometitle {
+    border: 1px solid var(--admin-color);
+    padding: 0.5rem;
+}
+
+input:focus {
+    outline: 5px solid var(--admin-color);
+    font-weight: bold;
+}
+
+textarea:focus {
+    border: 5px solid var(--admin-color);
+    font-weight: bold;
+}
+
+textarea {
+    margin-bottom: 1rem;
+    border: 1px solid var(--admin-color);
+    outline: none;
+    padding: 0.5rem;
+}
+
+.blockCategory, .blockAuthor, .blockStatus {
+    width: 300px;
+    justify-content: space-around;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+}
+
+.blockSelect {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.blockImage, .blockNewImage {
+    width: 300px;
+    height: 179px;
+    overflow: hidden;
+}
+
+.inputChoice {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 800px;
+    gap: 3.8rem;
+}
+
+.inputChoice label {
+    margin-top: 2px;
+}
+
+.fileSelection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    gap: 1rem;
+}
+
+.labelImage {
+    display: flex;
+    flex-direction: column;
+    background-color: #149b1b;
+    color: white;
+    text-align: center;
+    width: 20rem;
+    height: 70px;
+    border-radius: 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    padding-top: 20px;
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.8);
+}
+
+.labelImage:hover {
+    background-color: green;
+}
+
+.labelImage:active {
+    background-color: #149b1b;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.8) inset;
+}
+
+#imageUpload {
+    display: none;
+    cursor: pointer;
+}
+
+#preview {
+    width: 300px;
+    height: 187px;
+}
+
+.blockUploadImg {
+    margin-top: 50px;
+    height: 250px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    gap: 2rem;
+}
+
+.blockImage {
+    object-fit: cover;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-bottom: 50px;
+}
+
+.modalMainButton {
+    background: green;
+    cursor: pointer;
+    border: none;
+}
+
+.modalNoButton {
+    background: #d90000;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.modalMainButton:hover {
+    background: #189b18;
+}
+
+.modalNoButton:hover {
+    background: #b30000;
+}
+
+.formValidate {
+    cursor: pointer;
+    background: green;
+    color: whitesmoke;
+    font-weight: bold;
+    margin: 0.5rem;
+    width: 10rem;
+    height: 2.5rem;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    text-decoration: none;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.8);
+    border: none;
+}
+
+.formValidate:hover {
+    background: #189b18;
+}
+
+.formValidate:active {
+    background: green;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.8) inset;
+}
+
+.formCancel:hover {
+    background: #b30000;
+}
+
+.formCancel {
+    cursor: pointer;
+    background: red;
+    color: whitesmoke;
+    font-weight: bold;
+    margin: 0.5rem;
+    width: 10rem;
+    height: 2.5rem;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.8);
+    border: none;
+}
+
+.formCancel:active {
+    background: red;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.8) inset;
+}
+
+.modalMain {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    overflow: auto;
+    display: none;
+}
+
+.displayed {
+    display: flex
+}
+
+.modalMainContent {
+    width: 40rem;
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
+    background: whitesmoke;
+    border-radius: 10px;
+}
+
+.pConfirmation {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--our-black);
+}
+
+.globalButton {
+    margin: 0.5rem;
+    width: 10rem;
+    height: 2.5rem;
+    border-radius: 10px;
+    color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.modalMainButton {
+    background: green;
+    cursor: pointer;
+    border: none;
+}
+
+.modalMainButton:active {
+    background: green;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.8) inset;
+}
+
+.modalNoButton {
+    background: #d90000;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.modalMainButton:hover {
+    background: #189b18;
+}
+
+.modalNoButton:hover {
+    background: #b30000;
+}
+
+.modalNoButton:active {
+    background: red;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.8) inset;
+}
+
+
+.error {
+    color: red;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
