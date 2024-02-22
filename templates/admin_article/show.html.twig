@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article{% endblock %}
+
+{% block body %}
+    <h1>Article</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ article.id }}</td>
+            </tr>
+            <tr>
+                <th>ArticleTitle</th>
+                <td>{{ article.articleTitle }}</td>
+            </tr>
+            <tr>
+                <th>HomeTitle</th>
+                <td>{{ article.homeTitle }}</td>
+            </tr>
+            <tr>
+                <th>ImgSrc</th>
+                <td>{{ article.imgSrc }}</td>
+            </tr>
+            <tr>
+                <th>AltImg</th>
+                <td>{{ article.altImg }}</td>
+            </tr>
+            <tr>
+                <th>HomePreview</th>
+                <td>{{ article.homePreview }}</td>
+            </tr>
+            <tr>
+                <th>Introduction</th>
+                <td>{{ article.introduction }}</td>
+            </tr>
+            <tr>
+                <th>Detail</th>
+                <td>{{ article.detail }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ article.description }}</td>
+            </tr>
+            <tr>
+                <th>ShadowColor</th>
+                <td>{{ article.shadowColor }}</td>
+            </tr>
+            <tr>
+                <th>ReleaseDate</th>
+                <td>{{ article.releaseDate ? article.releaseDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ article.status }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ article.updatedAt ? article.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>ImageSize</th>
+                <td>{{ article.imageSize }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_article_index') }}">back to list</a>
+
+    <a href="{{ path('app_admin_article_edit', {'id': article.id}) }}">edit</a>
+
+    {{ include('admin_article/_delete_form.html.twig') }}
+{% endblock %}
