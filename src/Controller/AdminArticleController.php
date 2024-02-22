@@ -18,7 +18,7 @@ class AdminArticleController extends AbstractController
     #[Route('/', name: 'app_admin_article_index', methods: ['GET'])]
     public function index(ArticleRepository $articleRepository): Response
     {
-        return $this->render('admin_article/index.html.twig', [
+        return $this->render('admin/article/index.html.twig', [
             'articles' => $articleRepository->findAll(),
         ]);
     }
@@ -39,7 +39,7 @@ class AdminArticleController extends AbstractController
             return $this->redirectToRoute('app_admin_article_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('admin_article/new.html.twig', [
+        return $this->render('admin/article/new.html.twig', [
             'article' => $article,
             'form' => $form,
         ]);
@@ -48,7 +48,7 @@ class AdminArticleController extends AbstractController
     #[Route('/{id}', name: 'app_admin_article_show', methods: ['GET'])]
     public function show(Article $article): Response
     {
-        return $this->render('admin_article/show.html.twig', [
+        return $this->render('admin/article/show.html.twig', [
             'article' => $article,
         ]);
     }
@@ -66,7 +66,7 @@ class AdminArticleController extends AbstractController
             return $this->redirectToRoute('app_admin_article_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('admin_article/edit.html.twig', [
+        return $this->render('admin/article/edit.html.twig', [
             'article' => $article,
             'form' => $form,
         ]);
