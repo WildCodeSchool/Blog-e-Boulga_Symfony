@@ -16,6 +16,7 @@ class AuthorController extends AbstractController
 
         return $this->render('author/about_us.html.twig', [
             'authors' => $authors,
+            'page' => 'about'
         ]);
     }
 }
