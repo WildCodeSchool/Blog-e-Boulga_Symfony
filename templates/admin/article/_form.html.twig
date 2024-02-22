@@ -1,23 +1,23 @@
 {{ form_start(form) }}
 <div class="blockTitles">
-<div>
     <div>
-        {{ form_label(form.articleTitle) }}
+        <div>
+            {{ form_label(form.articleTitle) }}
+        </div>
+        {{ form_widget(form.articleTitle) }}
+        <div class="formHelper">
+            {{ form_help(form.articleTitle) }}
+        </div>
     </div>
-    {{ form_widget(form.articleTitle) }}
-    <div class="formHelper">
-        {{ form_help(form.articleTitle) }}
-    </div>
-</div>
-<div>
     <div>
-        {{ form_label(form.homeTitle) }}
+        <div>
+            {{ form_label(form.homeTitle) }}
+        </div>
+        {{ form_widget(form.homeTitle) }}
+        <div class="formHelper">
+            {{ form_help(form.homeTitle) }}
+        </div>
     </div>
-    {{ form_widget(form.homeTitle) }}
-    <div class="formHelper">
-        {{ form_help(form.homeTitle) }}
-    </div>
-</div>
 </div>
 <div>
     <div>
@@ -56,34 +56,35 @@
     </div>
 </div>
 <div class="blockSelect">
-<div>
     <div>
-        {{ form_label(form.status) }}
+        <div>
+            {{ form_label(form.status) }}
+        </div>
+        {{ form_widget(form.status) }}
+        <div class="formHelper">
+            {{ form_help(form.status) }}
+        </div>
     </div>
-    {{ form_widget(form.status) }}
-    <div class="formHelper">
-        {{ form_help(form.status) }}
+    <div>
+        <div>
+            {{ form_label(form.author) }}
+        </div>
+        {{ form_widget(form.author) }}
+        <div class="formHelper">
+            {{ form_help(form.author) }}
+        </div>
+    </div>
+    <div>
+        <div>
+            {{ form_label(form.category) }}
+        </div>
+        {{ form_widget(form.category) }}
+        <div class="formHelper">
+            {{ form_help(form.category) }}
+        </div>
     </div>
 </div>
-<div>
-    <div>
-        {{ form_label(form.author) }}
-    </div>
-    {{ form_widget(form.author) }}
-    <div class="formHelper">
-        {{ form_help(form.author) }}
-    </div>
-</div>
-<div>
-    <div>
-        {{ form_label(form.category) }}
-    </div>
-    {{ form_widget(form.category) }}
-    <div class="formHelper">
-        {{ form_help(form.category) }}
-    </div>
-</div>
-<div>
+<div id="selectorImg">
     <div>
         {{ form_label(form.imageFile) }}
     </div>
@@ -92,22 +93,7 @@
         {{ form_help(form.imageFile) }}
     </div>
 </div>
-</div>
-<div>
-    <div class="blockUploadImg">
-        <div class="inputChoice">
-            <div class="fileSelection">
-                <label for="imageUpload" class="labelImage">Télécharger votre image d'article</label>
-                <input type="file" name="imageUpload" id="imageUpload" onchange="previewImage(event)"
-                       value="Sélectionner un fichier"/>
-            </div>
-            <div class="blockNewImage">
-                <label for="newImg">Aperçu de votre image</label>
-                <img id="preview"/>
-            </div>
-        </div>
-    </div>
-</div>
+
 <div class="buttons">
     <div>
         <input class="formValidate" type="button" value="Valider">
@@ -123,5 +109,4 @@
     </section>
     <button type="button" class="formCancel">Annuler</button>
 </div>
-{#<button class="btn">{{ button_label|default('Enregistrer') }}</button>#}
 {{ form_end(form) }}
