@@ -17,6 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ArticleType extends AbstractType
 {
@@ -143,7 +144,7 @@ class ArticleType extends AbstractType
                     ]),
                 ]
             ])
-            ->add('imgSrc', TextType::class, [
+            ->add('imageFile', VichImageType::class, [
                 'label' => 'Choix de l\'image',
                 'help' => 'L\'image qui illustrera votre article.',
             ]);
