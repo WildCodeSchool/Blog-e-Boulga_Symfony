@@ -36,6 +36,21 @@ class Form
     #[Assert\NotBlank]
     private ?string $messageContent = null;
 
+    #[Assert\IsTrue(message: 'Vous devez accepter les conditions d\'utilisation')]
+    private ?bool $terms = false;
+
+    public function getTerms(): ?bool
+    {
+        return $this->terms;
+    }
+
+    public function setTerms(bool $terms): static
+    {
+        $this->terms = $terms;
+
+        return $this;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

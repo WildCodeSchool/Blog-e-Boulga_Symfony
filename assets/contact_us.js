@@ -7,7 +7,6 @@ let contact_form = document.querySelector(".contactUsForm")
 let check_form = []
 
 btn_submit.addEventListener("click", (event) => {
-
     /**
      * On vide le tableau check_form à chaque fois que l'on clique sur le bouton
      */
@@ -20,27 +19,26 @@ btn_submit.addEventListener("click", (event) => {
 
         let elementID = element.id
         let valueInput = element.value.trim()
+        let errorMessage = ''
 
         switch (element.type) {
             case "text":
-                if (elementID === "firstName" || elementID === "lastName" || elementID === "subject") {
+                if (elementID === "contact_form_firstName" || elementID === "contact_form_lastName") {
                     if (valueInput === "") {
-                        error_input(element);
+                        errorMessage = "Ce champ est obligatoire"
+                        error_input(element, errorMessage);
                     } else {
-                        element.style.borderBottom = "1px solid black";
-                        element.nextElementSibling.style.display = "none";
+                        validate_input(element);
                     }
 
                     if (elementID === "firstName" && valueInput.length < 2) {
-                        error_input(element);
+                        errorMessage = "Au moins 2 caractères requis"
+                        error_input(element, errorMessage);
                     }
 
                     if (elementID === "lastName" && valueInput.length < 2) {
-                        error_input(element);
-                    }
-
-                    if (elementID === "subject" && (valueInput.length < 4 || valueInput.length > 80)) {
-                        error_input(element);
+                        errorMessage = "Au moins 2 caractères requis"
+                        error_input(element, errorMessage);
                     }
                 }
                 break;
@@ -48,23 +46,23 @@ btn_submit.addEventListener("click", (event) => {
                 if (valueInput === "") {
                     element.style.border = "2px solid #Ec1d1d";
                     check_form.push("empty");
-                    element.nextElementSibling.style.display = "block";
-                    element.nextElementSibling.style.marginBottom = "1rem";
-                    event.preventDefault();
+
+                    errorMessage = "Ce champ est obligatoire"
+                    error_input(element, errorMessage);
                 } else if (valueInput.length < 10) {
-                    error_input(element);
+                    errorMessage = "Au moins 10 caractères requis"
+                    error_input(element, errorMessage);
                 } else {
-                    element.style.border = "1px solid black";
-                    element.nextElementSibling.style.display = "none";
+                    validate_input(element);
                 }
                 break;
             case "email":
                 let check_mail = isMail(valueInput);
                 if (valueInput === "" || check_mail == null) {
-                    error_input(element);
+                    errorMessage = "Veuillez entrer une adresse mail valide"
+                    error_input(element, errorMessage);
                 } else {
-                    element.style.borderBottom = "1px solid black";
-                    element.nextElementSibling.style.display = "none";
+                    validate_input(element);
                 }
                 break;
             case "checkbox":
@@ -80,66 +78,56 @@ btn_submit.addEventListener("click", (event) => {
         }
     })
 
-    /**
-     * Si le tableau check_form est vide, on envoie le formulaire, sinon on arrête l'envoi
-     */
-    if (check_form.length === 0) {
-        check_box = document.querySelector("#validation")
-        send(event, contact_form)
-    } else {
-        if (document.querySelector(".msg_sent") !== null) {
-            document.querySelector(".msg_sent").style.display = "none"
-        }
+    if (check_form.length > 0) {
         event.preventDefault();
     }
 
 })
 
-/**
- * Vérification du mail
- * @param {*} email
- * @returns
- */
 function isMail(email) {
     let mailRegex = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
     let regex = new RegExp(mailRegex);
     return email.match(regex);
 }
 
-/**
- * Si l'input est vide, on affiche un message d'erreur
- * @param {*} element
- */
-function error_input(element) {
+function error_input(element, errorMessage = "") {
+    shakeAnimation(element)
+
     element.style.borderBottom = "2px solid #Ec1d1d"
     check_form.push("empty")
-    element.nextElementSibling.style.display = "block"
-    element.nextElementSibling.style.marginBottom = "1rem"
+    let small = document.createElement("small")
+    small.innerText = errorMessage
+    small.classList.add("small")
+    let errorsDiv = element.nextElementSibling;
+
+    if (errorsDiv && errorsDiv.classList.contains('errors-w')) {
+        let existingSmall = errorsDiv.querySelector('small');
+        if (existingSmall) {
+            existingSmall.remove();
+        }
+        errorsDiv.appendChild(small);
+    }
 }
 
-/**
- * Si le formulaire est envoyé, on vide les inputs et on affiche un message de confirmation
- * @param {*} e
- * @param {*} form
- */
-function send(e, form) {
-    // code to implement if we decide to use fetch/ajax later on
-    /*
-    fetch(form.action, {
-        method: 'post', body: new FormData(form)
-    });
-    e.preventDefault();
+function validate_input(element) {
+    if (element.type === "textarea") {
+        element.style.border = "1px solid black";
+    } else {
+        element.style.borderBottom = "1px solid black"
+    }
+    let errorsDiv = element.nextElementSibling;
+    if (errorsDiv && errorsDiv.classList.contains('errors-w')) {
+        let existingSmall = errorsDiv.querySelector('small');
+        if (existingSmall) {
+            existingSmall.remove();
+        }
+    }
+}
 
-    inputs.forEach(element => { element.value = "" })
-    */
-    /**
-     * Affichage du message de confirmation
-     * On le cache au bout de 10 secondes
-     */
-    /*
-    msg_sent.style.display = "block";
-    setTimeout(() => {
-        msg_sent.style.display = "none";
-    }, 10000);
-    */
+function shakeAnimation(element) {
+    element.style.animation = "shake 0.82s cubic-bezier(.36,.07,.19,.97) both"
+
+    element.addEventListener('animationend', () => {
+        element.style.animation = '';
+    });
 }

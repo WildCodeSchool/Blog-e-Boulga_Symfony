@@ -24,3 +24,16 @@ a {
     text-decoration: none;
     color: var(--our-black);
 }
+
+label.required:after {
+    content: " *";
+    color: red;
+}
+
+.terms-link {
+    color: rgb(158, 114, 33);
+    text-decoration: underline;
+    &:hover {
+        color: var(--color-hover);
+    }
+}
