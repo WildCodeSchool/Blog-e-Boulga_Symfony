@@ -1,4 +1,5 @@
 {{ form_start(form) }}
+<div class="blockTitles">
 <div>
     <div>
         {{ form_label(form.articleTitle) }}
@@ -16,6 +17,7 @@
     <div class="formHelper">
         {{ form_help(form.homeTitle) }}
     </div>
+</div>
 </div>
 <div>
     <div>
@@ -53,6 +55,7 @@
         {{ form_help(form.detail) }}
     </div>
 </div>
+<div class="blockSelect">
 <div>
     <div>
         {{ form_label(form.status) }}
@@ -89,6 +92,21 @@
         {{ form_help(form.imgSrc) }}
     </div>
 </div>
-
-<button class="btn">{{ button_label|default('Enregistrer') }}</button>
+</div>
+<div class="buttons">
+    <div>
+        <input class="formValidate" type="button" value="Valider">
+    </div>
+    <section class="modalMain">
+        <div class="modalMainContent">
+            <p class="pConfirmation"></p>
+            <div class="modalMainButtons">
+                <input type="submit" id="validateForm" value="Confirmer" class="globalButton modalMainButton"/>
+                <button type="button" class="globalButton modalNoButton" id="cancelForm">Annuler</button>
+            </div>
+        </div>
+    </section>
+    <button type="button" class="formCancel">Annuler</button>
+</div>
+{#<button class="btn">{{ button_label|default('Enregistrer') }}</button>#}
 {{ form_end(form) }}

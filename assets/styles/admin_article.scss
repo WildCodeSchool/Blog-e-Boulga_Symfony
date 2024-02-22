@@ -18,6 +18,12 @@ form {
     height: 1500px;
 }
 
+.help-text {
+    font-weight: lighter;
+    font-size: small;
+    margin-top: 10px;
+}
+
 input {
     display: flex;
     flex-direction: column;
@@ -48,10 +54,22 @@ textarea:focus {
 }
 
 textarea {
-    margin-bottom: 1rem;
     border: 1px solid var(--admin-color);
     outline: none;
     padding: 0.5rem;
+    height: 250px;
+    resize: none;
+}
+
+.blockTitles{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.blockTitle, .blockHomeTitle {
+    width: 500px;
+    justify-content: space-around;
 }
 
 .blockCategory, .blockAuthor, .blockStatus {

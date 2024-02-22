@@ -33,6 +33,9 @@ class ArticleType extends AbstractType
                 'label' => 'Titre',
                 'required' => true,
                 'help' => 'Le titre de votre article.',
+                'attr' => [
+                    'class' => 'blockTitle'
+                ],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez renseigner le titre de votre article',
@@ -43,6 +46,9 @@ class ArticleType extends AbstractType
                 'label' => 'Titre homepage',
                 'required' => true,
                 'help' => 'Le titre de votre article qui sera visible sur la homepage.',
+                'attr' => [
+                    'class' => 'blockHomeTitle'
+                ],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez renseigner le titre de votre article pour la page d\'accueil',
@@ -96,6 +102,9 @@ class ArticleType extends AbstractType
                     'Publié' => '2',
                     'Archivé' => '3'
                 ],
+                'attr' => [
+                    'class' => 'blockStatus'
+                ],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez renseigner le statut de votre article',
@@ -111,6 +120,9 @@ class ArticleType extends AbstractType
                 'choice_label' => function (Author $author) {
                     return $author->getUser()->getFirstName() . ' ' . $author->getUser()->getLastName();
                 },
+                'attr' => [
+                    'class' => 'blockAuthor'
+                ],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez renseigner l\'auteur de votre article',
@@ -122,6 +134,9 @@ class ArticleType extends AbstractType
                 'class' => Category::class,
                 'required' => true,
                 'choice_label' => 'category_name',
+                'attr' => [
+                    'class' => 'blockCategory'
+                ],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez renseigner la categorie de votre article',
