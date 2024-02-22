@@ -26,6 +26,7 @@ class ArticleController extends AbstractController
         return $this->render('article/show.html.twig', [
             'article' => $article,
             'author' => $author,
+            'page' => 'article'
         ]);
     }
 }

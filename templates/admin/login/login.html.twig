@@ -1,0 +1,37 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block title %}Admin - Login{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('admin_login') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('admin_login') }}
+{% endblock %}
+
+{% block body %}
+    <main>
+        <section class="login">
+            <h2>Mon Espace Admin</h2>
+            <form method="POST">
+                <div class="inputSection">
+                    <label for="username">Votre identifiant</label>
+                    <input type="text" name="_username" id="login" placeholder="john" value="" required>
+                    {# {{ login }} #}
+                </div>
+                <div class="inputSection">
+                    <label for="password">Votre mot de passe</label>
+                    <input type="password" name="_password" id="password" placeholder="********" required>
+                </div>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                {% if error %}
+                    <div class="error">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+                <div class="button">
+                    <button type="submit">Se connecter</button>
+                </div>
+            </form>
+        </section>
+    </main>
+{% endblock %}
