@@ -13,6 +13,7 @@
         <exclude name="BooleanArgumentFlag" />
     </rule>
     <rule ref="rulesets/codesize.xml" >
+        <exclude name="ExcessiveMethodLength" />
         <exclude name="TooManyFields" />
         <exclude name="TooManyPublicMethods" />
     </rule>
