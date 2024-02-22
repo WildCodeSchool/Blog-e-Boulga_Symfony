@@ -2,58 +2,69 @@
 
 {% block title %}Article index{% endblock %}
 
+{% block javascripts %}
+    {{ encore_entry_script_tags('admin_articles') }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('admin_articles') }}
+{% endblock %}
+
 {% block body %}
-    <h1>Article index</h1>
+    <main>
+        <section class="filterButtons">
+            <a class="filterButton {{ filterStatus == null ? 'filtered' : '' }}" href="{{ path('app_admin_article_index') }}">Tous les articles</a>
+            <a class="filterButton {{ filterStatus == '2' ? 'filtered' : '' }}" href="{{ path('app_admin_article_index', {'status': 'published' }) }}">Articles publiés</a>
+            <a class="filterButton {{ filterStatus == '3' ? 'filtered' : '' }}" href="{{ path('app_admin_article_index', {'status': 'archived' }) }}">Articles archivés</a>
+            <a class="filterButton {{ filterStatus == '1' ? 'filtered' : '' }}" href="{{ path('app_admin_article_index', {'status': 'draft' }) }}">Brouillons</a>
+        </section>
+        <div class="plusDiv">
+            <a href="{{ path('app_admin_article_new') }}"><img class="add" src="{{ asset('build/images/components/plus.svg') }}" alt="Ajoutez un article" /></a>
+        </div>
+        <section class="articles">
+            {{ articles.error ?? '' }}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>ArticleTitle</th>
-                <th>HomeTitle</th>
-                <th>ImgSrc</th>
-                <th>AltImg</th>
-                <th>HomePreview</th>
-                <th>Introduction</th>
-                <th>Detail</th>
-                <th>Description</th>
-                <th>ShadowColor</th>
-                <th>ReleaseDate</th>
-                <th>Status</th>
-                <th>UpdatedAt</th>
-                <th>ImageSize</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for article in articles %}
-            <tr>
-                <td>{{ article.id }}</td>
-                <td>{{ article.articleTitle }}</td>
-                <td>{{ article.homeTitle }}</td>
-                <td>{{ article.imgSrc }}</td>
-                <td>{{ article.altImg }}</td>
-                <td>{{ article.homePreview }}</td>
-                <td>{{ article.introduction }}</td>
-                <td>{{ article.detail }}</td>
-                <td>{{ article.description }}</td>
-                <td>{{ article.shadowColor }}</td>
-                <td>{{ article.releaseDate ? article.releaseDate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ article.status }}</td>
-                <td>{{ article.updatedAt ? article.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ article.imageSize }}</td>
-                <td>
-                    <a href="{{ path('app_admin_article_show', {'id': article.id}) }}">show</a>
-                    <a href="{{ path('app_admin_article_edit', {'id': article.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="15">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_admin_article_new') }}">Create new</a>
+            {% for article in articles %}
+                {% set status =
+                    article.status == 1 ? 'Brouillon' :
+                    article.status == 2 ? 'Publié' :
+                    article.status == 3 ? 'Archivé' :
+                    'Error: Unknown status'
+                %}
+                {% set statusClass =
+                    article.status == 1 ? 'draft' :
+                    article.status == 2 ? 'live' :
+                    article.status == 3 ? 'archived' :
+                    'Error: Unknown status'
+                %}
+                <div class="article">
+                    <img src="{{ asset('build' ~ article.imgSrc ~ '') }}" alt="{{ article.altImg }}">
+                    <div>
+                        <p>{{ article.homeTitle }}</p>
+                        <small class="status {{ statusClass }}">
+                            {{ status }}
+                        </small>
+                    </div>
+                    <div class="buttons">
+                        {% if article.status == 2 %}
+                            {% set colorCrown = article.id == mainArticleId ? 'green' : 'gray' %}
+                            <img data-status="{{ filterStatus }}" data-id="{{ article.id }}" data-title="{{ article.homeTitle }}" class="mainButton {{ article.id == mainArticleId ? 'disabled'}}" src="{{ asset('build/images/components/crown-' ~ colorCrown ~ '.svg') }}" alt="icone d'un oeil ouvert" />
+                        {% endif %}
+                        <a class="seeButton articlesButton {{ article.status != 2 ? 'marged' }}" href="{{ path('app_article_show', {'id': article.id}) }}"><img src="{{ asset('build/images/components/mdi_eye-outline.svg') }}" alt="icone d'un oeil ouvert" class="svg-icon" /></a>
+                        <a class="editButton articlesButton" href="{{ path('app_admin_article_edit', {'id' : article.id }) }}"><img src="{{ asset('build/images/components/bx_edit.svg') }}" alt="icone d'un crayon dans un bloc" class="svg-icon" /></a>
+                    </div>
+                </div>
+            {% endfor %}
+        </section>
+        <section class="modalMain">
+            <div class="modalMainContent">
+                <p class="pConfirmation">Êtes-vous sûr de vouloir mettre cet article en avant ?</p>
+                <p class="articleTitle"></p>
+                <div class="modalMainButtons">
+                    <a class="globalButton modalMainButton" href="">Oui</a>
+                    <button class="globalButton modalNoButton">Retour</button>
+                </div>
+            </div>
+        </section>
+    </main>
 {% endblock %}
