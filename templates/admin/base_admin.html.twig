@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" type="image/png" href="{{ asset('build/images/logo-wild-code-school.svg') }}"/>
+        <title>
+            {% block title %}Admin - Blog-e-Boulga{% endblock %}
+        </title>
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {{ encore_entry_link_tags('app') }}
+        {{ encore_entry_script_tags('app') }}
+        
+        {% block stylesheets %}{% endblock %}
+
+        {% block javascripts %}{% endblock %}
+    </head>
+    <body>
+        {% include 'admin/components/_header_admin.html.twig' %}
+        {% block body %}{% endblock %}
+    </body>
+</html>
