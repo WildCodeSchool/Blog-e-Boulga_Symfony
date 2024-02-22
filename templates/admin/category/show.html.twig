@@ -1,0 +1,35 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block title %}Category{% endblock %}
+{% block stylesheets %}{{ encore_entry_link_tags('admin_category') }}{% endblock %}
+
+{% block javascripts %}{{ encore_entry_script_tags('admin_category') }}{% endblock %}
+
+{% block body %}
+    <main>
+    <h1>Category</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ category.id }}</td>
+            </tr>
+            <tr>
+                <th>CategoryName</th>
+                <td>{{ category.categoryName }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ category.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_category_index') }}">back to list</a>
+
+    <a href="{{ path('app_category_edit', {'id': category.id}) }}">edit</a>
+
+    {{ include('admin/category/_delete_form.html.twig') }}
+    </main>
+{% endblock %}
