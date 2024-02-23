@@ -146,6 +146,10 @@ class ArticleType extends AbstractType
             ])
             ->add('imageFile', VichImageType::class, [
                 'label' => 'Choix de l\'image',
+                'required' => false,
+                'allow_delete' => false,
+                'download_uri' => false,
+                'image_uri' => false,
                 'help' => 'L\'image qui illustrera votre article.',
             ]);
     }
