@@ -64,6 +64,8 @@ class AdminArticleController extends AbstractController
             $entityManager->persist($article);
             $entityManager->flush();
 
+            $this->addFlash('sucess', 'Votre article a bien été créé');
+
             return $this->redirectToRoute('app_admin_article_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -92,6 +94,8 @@ class AdminArticleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $article->setUpdatedAt(new DateTime());
             $entityManager->flush();
+
+            $this->addFlash('success', 'Votre article a bien été mis à jour');
 
             return $this->redirectToRoute('app_admin_article_index', [], Response::HTTP_SEE_OTHER);
         }

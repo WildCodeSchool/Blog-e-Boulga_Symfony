@@ -147,8 +147,7 @@ class Article
 
     public function setImgSrc(?string $imgSrc): static
     {
-        $this->imgSrc = $imgSrc;
-
+        $this->imgSrc = "/images/articles/" . $imgSrc;
         return $this;
     }
 
