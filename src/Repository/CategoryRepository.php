@@ -21,6 +21,14 @@ class CategoryRepository extends ServiceEntityRepository
         parent::__construct($registry, Category::class);
     }
 
+    //Query en WIP, c'est parce que je connais pas /o/
+    /*public function indexView()
+    {
+        $query =  $this->getEntityManager()->createQuery('SELECT category_name FROM App\Entity\Category');
+        $name = $query->getResult();
+        return $name;
+    }*/
+
 //    /**
 //     * @return Category[] Returns an array of Category objects
 //     */
