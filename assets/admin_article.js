@@ -22,7 +22,7 @@ buttonCancelForm.addEventListener("click", () =>{
   modalText.textContent = "Désirez-vous annuler la création ou modification de votre article?";
   buttonValidateModal.addEventListener("click", (event) => {
     event.preventDefault();
-    location.href = "/admin/article";
+    location.href = "/admin/article/index";
   })
 })
 
