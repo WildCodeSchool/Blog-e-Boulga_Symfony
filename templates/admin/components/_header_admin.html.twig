@@ -5,10 +5,8 @@
     {# Les références au variables page seront à intégrer quand la connexion sera gérée ainsi que les controlleurs de chaque page qui renverront leur page respectives #}
     {% if page != 'login' %}
         <ul class="list_nav_header">
-            {# {{ page == 'articles' ? 'thisPage' : '' }} #}
-            <li><a href="/admin/articles" id="">Articles</a></li>
-            {# {{ page == 'categories' ? 'thisPage' : '' }} #}
-            <li><a href="/admin/categories" id="">Catégories</a></li>
+            <li><a href="{{ path('app_admin_article_index') }}" id="{{ page == 'articles' ? 'thisPage' : '' }}">Articles</a></li>
+             <li><a href="/admin/categories" id="{{ page == 'categories' ? 'thisPage' : '' }}">Catégories</a></li>
             <li><a href="/admin/logout">Déconnexion</a></li>
         </ul>
 
