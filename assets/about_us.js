@@ -1,0 +1,1 @@
+import './styles/about_us.scss';
