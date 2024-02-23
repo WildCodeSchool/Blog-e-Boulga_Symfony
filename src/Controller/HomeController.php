@@ -16,7 +16,7 @@ class HomeController extends AbstractController
     public function index(ArticleRepository $articleRepository, MainArticleRepository $mainARepository): Response
     {
         $allArticles = $articleRepository->findBy(['status' => '2']);
-        $mainArticle = $mainARepository->findOneBy(['id' => '1'])->getArticle();
+        $mainArticle = $mainARepository->findAll()[0]->getArticle();
         $relatedArticles = [];
 
         $mainArticle = $mainArticle->getStatus() === 2 ? $mainArticle : null;
@@ -24,6 +24,7 @@ class HomeController extends AbstractController
         if ($mainArticle === null) {
             $mainArticle = $allArticles[0];
             unset($allArticles[0]);
+            sort($allArticles);
         }
 
         foreach ($allArticles as $key => $article) {
@@ -37,12 +38,16 @@ class HomeController extends AbstractController
             }
         }
 
+        sort($allArticles);
+
         if (count($relatedArticles) < 1) {
             $relatedArticles = [$allArticles[0], $allArticles[1]];
             unset($allArticles[0], $allArticles[1]);
+            sort($allArticles);
         } elseif (count($relatedArticles) < 2) {
             $relatedArticles[] = $allArticles[0];
             unset($allArticles[0]);
+            sort($allArticles);
         }
 
         return $this->render('home/index.html.twig', [
