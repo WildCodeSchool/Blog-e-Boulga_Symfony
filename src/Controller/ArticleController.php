@@ -15,9 +15,7 @@ class ArticleController extends AbstractController
     public function show(
         #[MapEntity(mapping: ['id' => 'id'])] Article $article
     ): Response {
-        // TODO à rajouter quand la connexion sera gérée
-        //  && !$this->user
-        if ($article->getStatus() != '2') {
+        if ($article->getStatus() != '2' && !$this->isGranted('ROLE_ADMIN')) {
             throw $this->createNotFoundException('The article does not exist');
         }
 
@@ -26,6 +24,7 @@ class ArticleController extends AbstractController
         return $this->render('article/show.html.twig', [
             'article' => $article,
             'author' => $author,
+            'page' => 'article'
         ]);
     }
 }
