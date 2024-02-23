@@ -32,6 +32,16 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/app.js')
+    .addEntry('footer', './assets/footer.js')
+    .addEntry('header', './assets/header.js')
+    .addEntry('contact_us', './assets/contact_us.js')
+    .addEntry('about_us', './assets/about_us.js')
+    .addEntry('home', './assets/home.js')
+    .addEntry('article_show', './assets/article_show.js')
+    .addEntry('admin_login', './assets/admin_login.js')
+    .addEntry('admin_article', './assets/admin_article.js')
+    .addEntry('admin_articles', './assets/admin_articles.js')
+    .addEntry('admin_category', './assets/admin_category.js')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')
@@ -68,15 +78,15 @@ Encore
     // uncomment if you use TypeScript
     // .enableTypeScriptLoader()
 
-// uncomment if you use React
-// .enableReactPreset()
+    // uncomment if you use React
+    // .enableReactPreset()
 
-// uncomment to get integrity="..." attributes on your script & link tags
-// requires WebpackEncoreBundle 1.4 or higher
-// .enableIntegrityHashes(Encore.isProduction())
+    // uncomment to get integrity="..." attributes on your script & link tags
+    // requires WebpackEncoreBundle 1.4 or higher
+    // .enableIntegrityHashes(Encore.isProduction())
 
-// uncomment if you're having problems with a jQuery plugin
-// .autoProvidejQuery()
+    // uncomment if you're having problems with a jQuery plugin
+    // .autoProvidejQuery()
 
     // enables Sass/SCSS support
     .enableSassLoader();

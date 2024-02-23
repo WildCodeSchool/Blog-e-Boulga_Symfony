@@ -1,2 +1,52 @@
 //start coding by removing this file and adding yours ;)
-@import "wcs";
+@import "footer.scss";
+
+* {
+    --main-color: #FFA458;
+    --color-hover: #793700;
+    --admin-color: #9EA7D8;
+    --our-black: rgb(11, 11, 11);
+    --header-height-desktop: 8rem;
+    --footer-height-desktop: 195px;
+    --footer-height-responsive: 366px;
+    --min-height-main: calc(100vh - var(--footer-height-desktop) - var(--header-height-desktop));
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+#thisPage {
+    border-bottom: 1px solid var(--our-black);
+}
+
+a {
+    text-decoration: none;
+    color: var(--our-black);
+}
+
+label.required:after {
+    content: " *";
+    color: red;
+}
+
+.terms-link {
+    color: rgb(158, 114, 33);
+    text-decoration: underline;
+    &:hover {
+        color: var(--color-hover);
+    }
+}
+
+.alert-success {
+    color: white;
+    height: 2rem;
+    width: 100%;
+    background-color: green;
+    font-size: 0.7rem;
+    margin: 2rem 0 0 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

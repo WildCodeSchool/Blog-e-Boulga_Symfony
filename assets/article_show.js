@@ -1,0 +1,1 @@
+import './styles/article_show.scss';
