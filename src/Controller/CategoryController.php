@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Category;
 use App\Form\CategoryType;
+use App\Repository\ArticleRepository;
+use App\Repository\AuthorRepository;
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -34,6 +36,8 @@ class CategoryController extends AbstractController
             $entityManager->persist($category);
             $entityManager->flush();
 
+            $this->addFlash('success', 'Votre catégorie a bien été ajoutée');
+
             return $this->redirectToRoute('app_category_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -62,6 +66,8 @@ class CategoryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
+            $this->addFlash('success', 'Votre catégorie a bien été mise à jour');
+
             return $this->redirectToRoute('app_category_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -73,11 +79,20 @@ class CategoryController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_category_delete', methods: ['POST'])]
-    public function delete(Request $request, Category $category, EntityManagerInterface $entityManager): Response
-    {
-        if ($this->isCsrfTokenValid('delete' . $category->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($category);
-            $entityManager->flush();
+    public function delete(
+        Request $request,
+        Category $category,
+        EntityManagerInterface $entityManager,
+        ArticleRepository $articleRepository
+    ): Response {
+        $articles = $articleRepository->findBy(['category' => $category->getId()]);
+        if (empty($articles)) {
+            if ($this->isCsrfTokenValid('delete' . $category->getId(), $request->request->get('_token'))) {
+                $entityManager->remove($category);
+                $entityManager->flush();
+            }
+        } else {
+            $this->addFlash('error', 'Cette catégorie ne peut être supprimée car elle est assignée');
         }
 
         return $this->redirectToRoute('app_category_index', [], Response::HTTP_SEE_OTHER);
