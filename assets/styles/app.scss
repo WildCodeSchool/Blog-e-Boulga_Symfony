@@ -42,7 +42,20 @@ label.required:after {
     color: white;
     height: 2rem;
     width: 100%;
-    background-color: green;
+    background-color: darkseagreen;
+    font-size: 0.7rem;
+    margin: 2rem 0 0 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.alert-error {
+    color: white;
+    height: 2rem;
+    width: 100%;
+    background-color: indianred;
     font-size: 0.7rem;
     margin: 2rem 0 0 0;
     width: 100%;
