@@ -15,7 +15,8 @@ class CategoryType extends AbstractType
         $builder
             ->add('categoryName', TextType::class, [
                 'label' => 'Nom de votre catégorie',
-                'required' => true])
+                'required' => true
+            ])
         ;
     }
 
