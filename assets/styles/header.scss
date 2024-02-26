@@ -1,0 +1,258 @@
+header {
+    background-color: var(--main-color);
+    margin: 0;
+    height: var(--header-height-desktop);
+    display: flex;
+    padding: 0 13rem;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.admin-header {
+    background-color: var(--admin-color) !important;
+}
+
+#aHeaderLogo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 12rem;
+}
+
+#logo_header {
+    width: 12rem;
+}
+
+#logo_header:hover {
+    cursor: pointer;
+}
+
+#closed_burger_icon:hover {
+    cursor: pointer;
+}
+
+.list_nav_header a {
+    color: var(--our-black);
+    text-decoration: none;
+}
+
+.list_nav_header a:hover {
+    cursor: pointer;
+    color: var(--color-hover);
+    text-decoration: none;
+}
+
+.list_nav_header {
+    font-weight: 600;
+    font-size: 1.25rem;
+    padding: 0;
+    width: 35rem;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#burger_icon {
+    display: none;
+}
+
+.menuToggle {
+    display: none;
+}
+
+.wrap {
+    display: none;
+}
+
+.loginTitle {
+    font-size: 1.2rem;
+}
+
+/*
+Gestion des media querries
+*/
+
+@media screen and (max-width: 1270px) {
+    .list_nav_header {
+        width: 35rem;
+    }
+}
+
+@media screen and (max-width: 1090px) {
+    header {
+        padding: 2rem 0;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .list_nav_header {
+        display: none;
+    }
+
+    #burger_icon {
+        display: block;
+        position: absolute;
+        right: 2rem;
+    }
+
+    .menuToggle {
+        display: flex;
+    }
+
+    .wrap {
+        display: flex;
+    }
+
+    .nav {
+        position: fixed;
+        left: 100%;
+        top: 0;
+        bottom: 0;
+        overflow: auto;
+        z-index: 5;
+        width: 100%;
+        display: block;
+        margin: var(--header-height-desktop) 0 0 0;
+        text-align: center;
+        transition: all 0.6s ease;
+    }
+    .nav li {
+        display: block;
+    }
+    .nav li a {
+        line-height: normal;
+        padding: 2rem;
+        border-bottom: 1px solid black;
+        display: flex;
+    }
+
+    .nav li a img {
+        margin-right: 0.5rem;
+    }
+    .toggle .nav {
+        left: 0;
+        transition: all 0.6s ease;
+    }
+
+    .header-toggle {
+        position: relative;
+        z-index: 10;
+    }
+
+    .body-toggle {
+        overflow: hidden;
+    }
+
+    .nav a.active {
+        border: none;
+        border-bottom: 1px solid black;
+        background: #000;
+    }
+    .menuToggle{position:relative;z-index:5;}
+
+}
+
+@media screen and (max-width: 450px) {
+
+    #aHeaderLogo {
+        width: 65%;
+    }
+
+    #logo_header {
+        width: 70%;
+    }
+}
+
+/**
+* Burger Menu handling
+*/
+
+.nav {
+    list-style-type: none;
+    background: var(--main-color);
+    overflow: hidden;
+    clear: both;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid black;
+}
+.nav li {
+    display: inline-block;
+}
+.nav a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 7px 2px;
+    color: var(--our-black);
+    text-decoration: none;
+    font-size: 1rem;
+    border-bottom: 1px solid black;
+    height: 6rem;
+}
+.nav a:hover {
+    color: white;
+}
+
+.menuToggle {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    padding: 0;
+    position: absolute;
+    right: 1rem;
+}
+
+
+/**
+ * ----------------------------------------
+ * animation burger button
+ * ----------------------------------------
+ */
+
+
+.line {
+    fill: none;
+    stroke: black;
+    stroke-width: 6;
+    transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line1 {
+    stroke-dasharray: 60 207;
+    stroke-width: 6;
+}
+
+.line2 {
+    stroke-dasharray: 60 60;
+    stroke-width: 6;
+}
+
+.line3 {
+    stroke-dasharray: 60 207;
+    stroke-width: 6;
+}
+
+.opened .line1 {
+    stroke-dasharray: 90 207;
+    stroke-dashoffset: -134;
+    stroke-width: 6;
+}
+
+.opened .line2 {
+    stroke-dasharray: 1 60;
+    stroke-dashoffset: -30;
+    stroke-width: 6;
+}
+
+.opened .line3 {
+    stroke-dasharray: 90 207;
+    stroke-dashoffset: -134;
+    stroke-width: 6;
+}

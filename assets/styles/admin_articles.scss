@@ -1,0 +1,200 @@
+main {
+    min-width: 30rem;
+    margin: 0 auto;
+    max-width: 60rem;
+    width: auto;
+}
+
+.article {
+    display: flex;
+    margin: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+
+.svg-icon:hover {
+    transform: scale(1.1);
+    background: var(--admin-color);
+    border-radius: 10rem;
+}
+
+.article > img {
+    width: 200px;
+    height: 120px;
+    object-fit: cover;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+.seeButton {
+    margin-right: 1rem;
+}
+
+.draft {
+    color: gray;
+    font-weight: bold;
+}
+
+.live {
+    color: green;
+    font-weight: bold;
+}
+
+.archived {
+    color: red;
+    font-weight: bold;
+}
+
+.unknownStatus {
+    color: red;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.filterButtons {
+    display: flex;
+    justify-content: space-around;
+    margin: 3rem;
+}
+
+.filterButton {
+    background: var(--admin-color);
+    margin: 0.5rem;
+    width: 10rem;
+    height: 2.5rem;
+    border-radius: 10px;
+    color: var(--our-black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.filterButton:hover {
+    background: whitesmoke;
+    color: var(--our-black);
+}
+
+.mainButton {
+    margin-right: 1.2rem;
+}
+
+.mainButton:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.modalMain {
+    position: fixed;
+    background: rgba(0,0,0,0.4);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    overflow: auto;
+    display: none;
+}
+
+.displayed {
+    display: flex
+}
+
+.blurred {
+    filter: blur(4px);
+    pointer-events: none;
+}
+
+.modalMainContent {
+    width: 40rem;
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
+    background: whitesmoke;
+    border-radius: 10px;
+}
+
+.pConfirmation {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--our-black);
+}
+
+.globalButton {
+    margin: 0.5rem;
+    width: 10rem;
+    height: 2.5rem;
+    border-radius: 10px;
+    color: var(--our-black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.modalMainButton {
+    background: green;
+}
+
+.modalNoButton {
+    background: #d90000;
+    border: none;
+    font-size: 1rem;
+}
+
+.modalMainButton:hover {
+    background: #189b18;
+}
+
+.modalNoButton:hover {
+    cursor: pointer;
+    background: #b30000;
+}
+
+.modalMainButtons {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.articleTitle {
+    font-size: 1rem;
+    text-decoration: underline;
+}
+
+.disabled {
+    pointer-events: none;
+}
+
+.marged {
+    margin-left: 5rem;
+}
+
+.plusDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 4rem;
+}
+
+.add {
+    width: 2rem;
+}
+
+.add:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.filtered {
+    background: whitesmoke;
+    color: var(--our-black);
+}
