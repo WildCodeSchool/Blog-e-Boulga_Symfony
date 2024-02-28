@@ -60,7 +60,6 @@ class Article
     private ?string $description = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Assert\Length(min: 3, max: 255)]
     private ?string $shadowColor = null;
 
     #[ORM\Column(type: "datetime", nullable: true)]
