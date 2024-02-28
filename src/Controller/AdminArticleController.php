@@ -63,10 +63,13 @@ class AdminArticleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $article->setReleaseDate(new DateTime());
             $article->setUpdatedAt(new DateTime());
+            if (empty($article->getImgSrc())) {
+                $article->setImgSrc('Planete-technologie.jpg');
+            }
             $entityManager->persist($article);
             $entityManager->flush();
 
-            $this->addFlash('sucess', 'Votre article a bien été créé');
+            $this->addFlash('success', 'Votre article a bien été créé');
 
             return $this->redirectToRoute('app_admin_article_index', [], Response::HTTP_SEE_OTHER);
         }

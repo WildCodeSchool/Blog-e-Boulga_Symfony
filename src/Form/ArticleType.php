@@ -18,6 +18,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Vich\UploaderBundle\Form\Type\VichImageType;
+use Symfony\Component\Validator\Constraints\File;
 
 class ArticleType extends AbstractType
 {
@@ -151,6 +152,19 @@ class ArticleType extends AbstractType
                 'download_uri' => false,
                 'image_uri' => false,
                 'help' => 'L\'image qui illustrera votre article.',
+                'constraints' => [
+                    new File([
+                        'maxSize' => '1M',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/webp',
+                            'image/png',
+                            'image/jpg',
+                        ],
+                        'mimeTypesMessage' => 'Votre image ne respecte pas le bon format : png, jpg, pjeg, webp',
+                        'maxSizeMessage' => 'Votre image ne respecte pas la taille max : 2MO',
+                        ])
+                ],
             ]);
     }
 
