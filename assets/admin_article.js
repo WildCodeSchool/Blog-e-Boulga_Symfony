@@ -3,7 +3,7 @@ import './styles/admin_article.scss';
 let buttonValidateForm = document.querySelector(".formValidate");
 let buttonValidateModal = document.querySelector(".modalMainButton");
 let buttonCancelForm = document.querySelector(".formCancel");
-let buttonCancelModal= document.querySelector(".modalNoButton");
+let buttonCancelModal = document.querySelector(".modalNoButton");
 let modalText = document.querySelector(".pConfirmation");
 let upload = document.getElementById('article_imageFile_file');
 
@@ -11,13 +11,13 @@ let form = document.querySelector(".formArticle");
 
 let modal = document.querySelector(".modalMain")
 
-buttonValidateForm.addEventListener("click", () =>{
+buttonValidateForm.addEventListener("click", () => {
   modalOpen();
   windowListener();
   modalText.textContent = "Désirez-vous enregistrer votre article?";
 })
 
-buttonCancelForm.addEventListener("click", () =>{
+buttonCancelForm.addEventListener("click", () => {
   modalOpen();
   windowListener();
   modalText.textContent = "Désirez-vous annuler la création ou modification de votre article?";
@@ -27,7 +27,7 @@ buttonCancelForm.addEventListener("click", () =>{
   })
 })
 
-buttonCancelModal.addEventListener("click", () =>{
+buttonCancelModal.addEventListener("click", () => {
   modalClose();
 })
 
@@ -55,7 +55,7 @@ function previewImage(e) {
 
   if (input.files && input.files[0]) {
     const reader = new FileReader();
-    reader.onload = function(e) {
+    reader.onload = function (e) {
       image.src = e.target.result;
     }
     reader.readAsDataURL(input.files[0]);
