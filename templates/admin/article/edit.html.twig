@@ -5,8 +5,8 @@
 
 {% block javascripts %}{{ encore_entry_script_tags('admin_article') }}{% endblock %}
 {% block body %}
+    <main>
     <h1>Édition de votre article</h1>
-<main>
     {{ include('admin/article/_form.html.twig')}}
 </main>
 {% endblock %}
